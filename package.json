@@ -1,0 +1,36 @@
+{
+  "name": "virtual_event_mgmt",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch app.ts",
+    "test": "vitest",
+    "db:push": "bunx drizzle-kit push"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/pg": "^8.11.11",
+    "drizzle-kit": "^0.30.6",
+    "tsx": "^4.19.3",
+    "vitest": "^3.1.1",
+    "supertest": "^7.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@d3vtool/ex-frame": "^1.1.8",
+    "@d3vtool/strict-env": "2.0.14",
+    "@d3vtool/utils": "^8.1.6",
+    "@d3vtool/validator": "1.1.4",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.1",
+    "@types/nodemailer": "^6.4.17",
+    "@types/supertest": "^6.0.3",
+    "bcrypt": "^5.1.1",
+    "drizzle-orm": "^0.41.0",
+    "express": "^5.1.0",
+    "nodemailer": "^6.10.0",
+    "pg": "^8.14.1"
+  }
+}
