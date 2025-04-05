@@ -23,9 +23,9 @@ export class AttendeesEventMapModel {
         attendeeId: TUser["userId"]   
     ) {
         try {
-            const eventExists = await EventModel.fetchEventById(eventId);
+            const isEventExists = await EventModel.fetchEventById(eventId);
 
-            if (!eventExists.length) {
+            if (!isEventExists.length) {
                 throw new ClientError(`EventId '${eventId}' not found.`, HttpClientError.NotFound);
             }
     

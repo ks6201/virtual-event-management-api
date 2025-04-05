@@ -88,7 +88,12 @@ export class EventModel {
             }
 
             return result[0];
-        } catch {
+        } catch(err: unknown) {
+            if(
+                err instanceof ClientError 
+            ) {
+                throw err;
+            }
             throw new ServerError(
                 "Something went wrong while fetching all events.",
                 HttpServerError.InternalServerError
