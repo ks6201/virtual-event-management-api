@@ -5,7 +5,7 @@ import type { UUID } from "../libs/types";
 import { ServerError } from "../errors/error-classes/server-error";
 import { ClientError } from "../errors/error-classes/client-error";
 import { PG_ERROR_CODE_MAP } from "../errors/error-configs/pg-error-map";
-import { attendeesEventMap, type Events, type TUser } from "../db/schema";
+import { attendeesEventMap, events, type Events, type TUser } from "../db/schema";
 import { HttpClientError, HttpServerError } from "../libs/http-response-code";
 
 
@@ -23,6 +23,12 @@ export class AttendeesEventMapModel {
         attendeeId: TUser["userId"]   
     ) {
         try {
+            const eventExists = await EventModel.fetchEventById(eventId);
+
+            if (!eventExists.length) {
+                throw new ClientError(`EventId '${eventId}' not found.`, HttpClientError.NotFound);
+            }
+    
             await db.insert(attendeesEventMap).values({
                 eventId,
                 attendeeId
@@ -33,7 +39,10 @@ export class AttendeesEventMapModel {
                     `EventId '${eventId}' not found.`,
                     HttpClientError.NotFound
                 );
+            } else if(err instanceof ClientError) {
+                throw err;
             }
+
             throw new ServerError(
                 "Something went wrong while registering for event, Please try after sometime.",
                 HttpServerError.InternalServerError
