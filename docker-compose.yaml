@@ -1,0 +1,44 @@
+services:
+  VEM_DB:
+    image: postgres:17-alpine
+    container_name: oven_postgres_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ./db_vem.sql:/docker-entrypoint-initdb.d/db_vem.sql:ro
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  VEM_APP:
+    image: oven/bun:latest
+    container_name: oven_vem_app
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT}
+      JWT_SEC: ${JWT_SEC}
+      EMAIL_ID: ${EMAIL_ID}
+      EMAIL_APP_ID: ${EMAIL_APP_ID}
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASS}@oven_postgres_db/${POSTGRES_DB}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./app.ts:/app/app.ts
+      - ./package.json:/app/package.json
+      - ./setup.vitest.ts:/app/setup.vitest.ts
+      - ./vitest.config.ts:/app/vitest.config.ts
+      - ./drizzle.config.ts:/app/drizzle.config.ts
+    working_dir: /app  
+    command: /bin/sh -c "bun install && bun app.ts"
+    depends_on:
+      - VEM_DB
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
