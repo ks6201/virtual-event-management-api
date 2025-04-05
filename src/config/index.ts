@@ -13,6 +13,6 @@ export const BACKEND = makeReadOnly({
 });
 
 export const MAIL = makeReadOnly({
-    user: process.env.MAIL_ID!,
+    user: process.env.EMAIL_ID!,
     pass: process.env.EMAIL_APP_ID!
 });

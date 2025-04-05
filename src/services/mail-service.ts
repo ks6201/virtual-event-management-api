@@ -15,14 +15,6 @@ class MailService {
         });
     }
 
-    /**
-     * Sends an email.
-     *
-     * @param {string} from - The sender's email address.
-     * @param {string} toMail - The recipient's email address.
-     * @param {string} subject - The subject of the email.
-     * @param {string} body - The body content of the email.
-     */
     async sendMail(from: string, toMail: string, subject: string, body: string): Promise<boolean> {
         const mailOptions: Mail.Options = {
             from: `${from} <${process.env.MAIL_ID}>`,
