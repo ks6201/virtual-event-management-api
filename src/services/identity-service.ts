@@ -1,14 +1,15 @@
 import { BACKEND } from "../config";
-import { isUUID, type UUID } from "../libs/types";
+import { compare, hash } from "bcryptjs";
+import { type UUID } from "../libs/types";
 import { UserModel } from "../models/users-model";
+import { isInDevelopmentMode } from "../libs/utils";
 import { UserRoles } from "../models/user_roles-model";
+import type { TUser, TUserRoles } from "../db/schema";
 import type { CreateUser, LoginUser } from "../v-schemas/user";
 import { ClientError } from "../errors/error-classes/client-error";
 import { ServerError } from "../errors/error-classes/server-error";
 import { HttpClientError, HttpServerError } from "../libs/http-response-code";
-import { bcryptCompare, bcryptHash, isInDevelopmentMode } from "../libs/utils";
 import { createExpiry, createIssueAt, DirtyJwtSignature, ExpiredJwt, InvalidJwt, signJwt, verifyJwt } from "@d3vtool/utils";
-import type { TUser, TUserRoles } from "../db/schema";
 
 export type CustomClaims = {
     userId: TUser["userId"],
@@ -68,7 +69,7 @@ export class IdentityService {
     static async hashPassword(
         password: string
     ) {
-        const hashedPassword = await bcryptHash(password, 10);
+        const hashedPassword = await hash(password, 10);
 
         return hashedPassword;
     }
@@ -84,7 +85,7 @@ export class IdentityService {
         );
         
         try {
-            const isOkay = await bcryptCompare(loginCreds.password, result.password);
+            const isOkay = await compare(loginCreds.password, result.password);
 
             if(!isOkay) {
                 throw new ClientError(

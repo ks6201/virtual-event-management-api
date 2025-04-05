@@ -1,4 +1,3 @@
-import bcrypt from "bcrypt";
 import { promisify } from "node:util";
 import type { NextFunction } from "express";
 import type { Request, RequestHandler, Response } from "express";
@@ -25,25 +24,6 @@ export const asyncHandler = (fn: RequestHandler) => (
         next(err);
     });
 }
-
-
-/**
- * Hashes a given string or buffer using bcrypt algorithm.
- * 
- * @param {string | Buffer<ArrayBufferLike>} arg1 - The string or buffer to be hashed.
- * @param {string | number} arg2 - The salt rounds or salt string to be used in hashing.
- * @returns {Promise<string>} A promise that resolves to the hashed string.
- */
-export const bcryptHash = promisify(bcrypt.hash);
-
-/**
- * Compares a given string or buffer with a hashed string to check if they match.
- * 
- * @param {string | Buffer<ArrayBufferLike>} arg1 - The string or buffer to compare.
- * @param {string} arg2 - The hashed string to compare against.
- * @returns {Promise<boolean>} A promise that resolves to a boolean indicating whether the input matches the hash.
- */
-export const bcryptCompare = promisify(bcrypt.compare);
 
 /**
  * Checks if the application is running in development mode.
