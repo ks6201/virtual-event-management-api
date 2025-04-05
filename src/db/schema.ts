@@ -33,6 +33,7 @@ export const events = pgCore.pgTable('events', {
   name: pgCore.text('name').notNull(), 
   date: pgCore.date('date').notNull(),
   time: pgCore.time('time').notNull(),
+  description: pgCore.text("description").notNull(),
   organizerId: pgCore.uuid('organizer_id').references(() => users.userId).notNull(),
   createdAt: pgCore.timestamp('created_at').defaultNow()
 });
@@ -40,6 +41,13 @@ export const events = pgCore.pgTable('events', {
 export type Events = Omit<typeof events.$inferSelect, "eventId"> & {
   eventId: UUID
 };
+
+export type CreateEvent = Omit<
+typeof events.$inferSelect, 
+"eventId" | 
+"createdAt" |
+"organizerId"
+>;
 
 export type UpdateEvents = Omit<Events, "createdAt" | "eventId">;
 

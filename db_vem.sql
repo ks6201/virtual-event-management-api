@@ -5,7 +5,7 @@
 -- Dumped from database version 14.17 (Ubuntu 14.17-0ubuntu0.22.04.1)
 -- Dumped by pg_dump version 14.17 (Ubuntu 14.17-0ubuntu0.22.04.1)
 
--- Started on 2025-04-05 04:49:40 IST
+-- Started on 2025-04-06 03:17:12 IST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -77,7 +77,7 @@ ALTER SEQUENCE drizzle.__drizzle_migrations_id_seq OWNED BY drizzle.__drizzle_mi
 
 
 --
--- TOC entry 212 (class 1259 OID 173752)
+-- TOC entry 212 (class 1259 OID 196898)
 -- Name: attendees_event_map; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -90,7 +90,7 @@ CREATE TABLE public.attendees_event_map (
 
 
 --
--- TOC entry 213 (class 1259 OID 173759)
+-- TOC entry 213 (class 1259 OID 196905)
 -- Name: events; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -99,13 +99,14 @@ CREATE TABLE public.events (
     name text NOT NULL,
     date date NOT NULL,
     "time" time without time zone NOT NULL,
+    description text NOT NULL,
     organizer_id uuid NOT NULL,
     created_at timestamp without time zone DEFAULT now()
 );
 
 
 --
--- TOC entry 214 (class 1259 OID 173768)
+-- TOC entry 214 (class 1259 OID 196914)
 -- Name: user_roles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -117,7 +118,7 @@ CREATE TABLE public.user_roles (
 
 
 --
--- TOC entry 215 (class 1259 OID 173772)
+-- TOC entry 215 (class 1259 OID 196918)
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -148,7 +149,7 @@ ALTER TABLE ONLY drizzle.__drizzle_migrations
 
 
 --
--- TOC entry 3200 (class 2606 OID 173758)
+-- TOC entry 3200 (class 2606 OID 196904)
 -- Name: attendees_event_map attendees_event_map_id_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -157,7 +158,7 @@ ALTER TABLE ONLY public.attendees_event_map
 
 
 --
--- TOC entry 3202 (class 2606 OID 173767)
+-- TOC entry 3202 (class 2606 OID 196913)
 -- Name: events events_event_id_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -166,7 +167,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- TOC entry 3204 (class 2606 OID 173782)
+-- TOC entry 3204 (class 2606 OID 196928)
 -- Name: users users_email_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -175,7 +176,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3206 (class 2606 OID 173780)
+-- TOC entry 3206 (class 2606 OID 196926)
 -- Name: users users_user_id_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -184,7 +185,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3208 (class 2606 OID 173788)
+-- TOC entry 3208 (class 2606 OID 196934)
 -- Name: attendees_event_map attendees_event_map_attendee_id_users_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -193,7 +194,7 @@ ALTER TABLE ONLY public.attendees_event_map
 
 
 --
--- TOC entry 3207 (class 2606 OID 173783)
+-- TOC entry 3207 (class 2606 OID 196929)
 -- Name: attendees_event_map attendees_event_map_event_id_events_event_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -202,7 +203,7 @@ ALTER TABLE ONLY public.attendees_event_map
 
 
 --
--- TOC entry 3209 (class 2606 OID 173793)
+-- TOC entry 3209 (class 2606 OID 196939)
 -- Name: events events_organizer_id_users_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -211,7 +212,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- TOC entry 3210 (class 2606 OID 173798)
+-- TOC entry 3210 (class 2606 OID 196944)
 -- Name: user_roles user_roles_user_id_users_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -219,7 +220,7 @@ ALTER TABLE ONLY public.user_roles
     ADD CONSTRAINT user_roles_user_id_users_user_id_fk FOREIGN KEY (user_id) REFERENCES public.users(user_id);
 
 
--- Completed on 2025-04-05 04:49:45 IST
+-- Completed on 2025-04-06 03:17:21 IST
 
 --
 -- PostgreSQL database dump complete

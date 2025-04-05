@@ -5,12 +5,6 @@ import { HttpClientError } from "../libs/http-response-code";
 
 type Key = "query" | "body" | "params"
 
-/**
- * Middleware function that validates incoming data against a schema.
- * 
- * @param {Object} schema - The schema to validate the incoming data against.
- * @param {"query" | "body" | "params"} key - The key indicating where to find the data to validate.
- */
 export function validate<T extends ObjectValidator<any>>(
     schema: T,
     key: Key
@@ -28,7 +22,7 @@ export function validate<T extends ObjectValidator<any>>(
         } catch(err: unknown) {
             if(err instanceof ObjectValidationError) {
                 throw new ClientError(
-                    err.message,
+                    `For key '${err.key}': ${err.message}`,
                     HttpClientError.BadRequest
                 );
             }

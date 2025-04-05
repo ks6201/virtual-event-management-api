@@ -1,9 +1,7 @@
 import { server } from "../setup.vitest";
 import { beforeAll, describe, expect, it } from "vitest";
 import type { CreateUser, LoginUser } from "../src/v-schemas/user";
-import { db } from "../src/db";
-import { events, users } from "../src/db/schema";
-import { eq } from "drizzle-orm";
+import type { CreateEvent } from "../src/db/schema";
 
 const organizerSignupCreds: CreateUser = {
     name: "Sudhanshu",
@@ -46,11 +44,13 @@ describe("Event Organizer Registeration", () => {
     
     it("Should respond with status 401 with no login auth token. POST /events", async() => {
 
-        const eventInfo = {
+        const eventInfo: CreateEvent = {
             name: "ExFrame overview",
             date: "2025-12-13",
-            time: "12:45"
+            time: "12:45",
+            description: "This is test"
         }
+        
         const response = await server
             .post("/events").send(eventInfo);
 
@@ -73,10 +73,11 @@ describe("Event Organizer Registeration", () => {
 
     it("Should create new event with status 201 having valid data. POST /events", async() => {
 
-        const eventInfo = {
+        const eventInfo: CreateEvent = {
             name: "ExFrame overview",
             date: "2025-12-13",
-            time: "12:45"
+            time: "12:45",
+            description: "This is a test."
         }
         const response = await server
             .post("/events").send(eventInfo)

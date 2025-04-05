@@ -25,6 +25,7 @@ export class EventModel {
             await db.insert(events).values({
                 date: eventInfo.date,
                 name: eventInfo.name,
+                description: eventInfo.description,
                 organizerId,
                 time: eventInfo.time
             });
