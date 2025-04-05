@@ -1,7 +1,6 @@
 import { app } from "../app";
-import { db } from "../src/db";
 import supertest from "supertest";
-import { beforeAll, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 
 
 const server = supertest(app);
