@@ -1,4 +1,3 @@
-import { promisify } from "node:util";
 import type { NextFunction } from "express";
 import type { Request, RequestHandler, Response } from "express";
 
@@ -27,8 +26,6 @@ export const asyncHandler = (fn: RequestHandler) => (
 
 /**
  * Checks if the application is running in development mode.
- * 
- * @returns {boolean} `true` if the application is in development mode, `false` otherwise.
  */
 export function isInDevelopmentMode() {
     return process.env.NODE_ENV === "development";

@@ -11,7 +11,12 @@ import { HttpClientError, HttpServerError } from "../libs/http-response-code";
 
 export class EventModel {
 
-
+    /**
+     * Inserts a new event data in events table.
+     * 
+     * @param {string} organizerId - The ID of the organizer creating the event.
+     * @param {Object} eventInfo - The information about the event.
+     */
     static async create(
         organizerId: UUID,
         eventInfo: CreateEvent
@@ -32,6 +37,11 @@ export class EventModel {
     }
     
 
+    /**
+     * Fetches all events for a specific organizer.
+
+    * @param {string} organizerId - The ID of the organizer whose events are to be fetched.
+     */
     static async fetchAll(
         organizerId: UUID
     ) {
@@ -49,6 +59,12 @@ export class EventModel {
     }
 
 
+    /**
+     * Fetches a specific event by its ID.
+     * 
+     * @param {string} eventId - The ID of the event to fetch.
+     * @param {Array<string>} colsToFetch - An array of column names to fetch for the event.
+     */
     static async fetchEventById(
         eventId: Events["eventId"],
         colsToFetch?: (keyof Events)[]
@@ -80,6 +96,14 @@ export class EventModel {
         }
     }
 
+
+    /**
+     * Updates a specific event by its ID.
+     * 
+     * @param {string} organizerId - The ID of the organizer updating the event.
+     * @param {string} eventId - The ID of the event to update.
+     * @param {Object} colsToValueMap - A map of column names to their new values for the event.
+     */ 
     static async updateEventById(
         organizerId: UUID,
         eventId: Events["eventId"],
@@ -104,6 +128,13 @@ export class EventModel {
         }
     }
 
+
+    /**
+     * Deletes a specific event by its ID.
+     * 
+     * @param {string} organizerId - The ID of the organizer deleting the event.
+     * @param {string} eventId - The ID of the event to delete.
+     */
     static async deleteEventById(
         organizerId: UUID,
         eventId: Events["eventId"]

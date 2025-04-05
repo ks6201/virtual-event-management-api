@@ -16,10 +16,10 @@ import type { TUserRoles } from "../../db/schema";
 export class UsersController {
     
     /**
-     * Handles user signup requests
+     * Handles the registration process for a user (attendee or organizer).
      * 
-     * @param req The request object
-     * @param res The response object
+     * @param {Object} req - The HTTP request object containing the registration data.
+     * @param {Object} res - The HTTP response object used to send a response back to the client.
      */
     @Post("/register")
     @Middlewares(
@@ -42,10 +42,10 @@ export class UsersController {
 
 
     /**
-     * Handles user login requests
+     * Handles the login process for an attendee.
      * 
-     * @param req The request object
-     * @param res The response object
+     * @param {Object} req - The HTTP request object containing the login data.
+     * @param {Object} res - The HTTP response object used to send a response back to the client.
      */
     @Post("/login")
     @Middlewares(
@@ -75,6 +75,13 @@ export class UsersController {
         });
     }
 
+
+    /**
+     * Retrieves all events for a specific attendee.
+     * 
+     * @param {Object} req - The HTTP request object containing the request data, including the attendee ID.
+     * @param {Object} res - The HTTP response object used to send a response back to the client.
+     */
     @Get("/attendee/events")
     @Middlewares(
         authMiddleware,

@@ -14,6 +14,12 @@ type PGTX = PgTransaction<NodePgQueryResultHKT, Record<string, never>, ExtractTa
 
 export class UserRoles {
 
+    /**
+     * To create new 'user_roles'.
+     *  
+     * @param {"organizer" | "attendee"} role
+     * @param {string} userId
+    */
     static async create(
         role: TUserRoles["role"],
         userId: TUserRoles["userId"]
@@ -24,6 +30,13 @@ export class UserRoles {
         });
     }
 
+    /**
+     * To create new 'user_roles' using transaction client.
+     *
+     * @param {PgTransaction} tx 
+     * @param {"organizer" | "attendee"} role
+     * @param {string} userId
+    */
     static async tCreate(
         tx: PGTX,
         role: TUserRoles["role"],
@@ -35,6 +48,11 @@ export class UserRoles {
         });
     }
 
+    /**
+     * Fetches the roles associated with a specific user by their ID.
+     * 
+     * @param {string} userId - The ID of the user whose roles are to be fetched.
+     */
     static async getRolesById(
         userId: UUID
     ) {

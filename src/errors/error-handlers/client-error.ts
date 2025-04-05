@@ -2,6 +2,12 @@ import type { Response } from "express";
 import { isInDevelopmentMode } from "../../libs/utils";
 import type { ClientError } from "../error-classes/client-error";
 
+/**
+ * Handles client errors and sends an error response.
+ * 
+ * @param {ClientError} error - The client error.
+ * @param {Response} res - The response object.
+ */
 export function clientError(
     error: ClientError,
     res: Response

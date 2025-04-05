@@ -4,7 +4,13 @@ import { ClientError } from "../errors/error-classes/client-error";
 import { HttpClientError } from "../libs/http-response-code";
 
 
-
+/**
+ * Middleware function that handles authentication for incoming requests.
+ * 
+ * @param {Request} req - The HTTP request object.
+ * @param {Response} _res - The HTTP response object.
+ * @param {NextFunction} next - The function to call to pass control to the next middleware or route handler.
+ */
 export async function authMiddleware(
     req: Request,
     _res: Response,

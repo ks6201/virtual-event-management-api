@@ -16,6 +16,8 @@ export class UserModel {
 
     /**
      * 
+     * Inserts new User to users table
+     * 
      * @param {CreateUser} user  
     */
     static async create(
@@ -68,7 +70,16 @@ export class UserModel {
             );
         }
     }
-    
+
+
+    /**
+     * 
+     * To fetch columns based on any one of table column
+     * 
+     * @param {string} colName
+     * @param {unknown} colValue
+     * @param {any[]} colsToFetch
+    */
     static async fetchColsByCol<K extends keyof TUser>(
         colName: K,
         colValue: TUser[K],
@@ -109,6 +120,13 @@ export class UserModel {
     }
 
 
+    /**
+     * 
+     * To fetch Columns by email column.
+     * 
+     * @param {string} email
+     * @param {string[]} colsToFetch
+    */
     static async fetchColsByEmail<K extends keyof TUser>(
         email: TUser["email"],
         colsToFetch: K[]

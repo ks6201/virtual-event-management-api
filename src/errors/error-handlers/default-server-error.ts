@@ -7,14 +7,18 @@ import { clientError } from "./client-error";
 import { serverError } from "./server-error";
 
 
-
+/**
+ * Handles unexpected server errors and sends a generic error response.
+ * 
+ * @param {unknown} error - The error object, typically an unexpected server-side issue.
+ * @param {Request} _req - The request object (unused here).
+ * @param {Response} res - The response object used to send the error response.
+ */
 export function defaultServerError(
     error: unknown,
     _req: Request,
     res: Response
 ) {
-
-    // console.log(error);
 
     if(error instanceof ClientError) {
         return clientError(

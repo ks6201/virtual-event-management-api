@@ -20,6 +20,11 @@ export class IdentityService {
 
     static #JWT_SEC = process.env.JWT_SEC!;
 
+    /**
+     * Creates a new user in the system.
+     * 
+     * @param {CreateUser} user - The user object containing the details of the new user.
+     */
     static async create(
         user: CreateUser
     ) {
@@ -55,6 +60,11 @@ export class IdentityService {
     }
 
 
+    /**
+     * Retrieves the user ID associated with the provided email address.
+     * 
+     * @param {string} userEmail - The email address of the user whose ID is to be retrieved.
+     */
     static async getUserIdByEmail(
         userEmail: TUser["email"]
     ) {
@@ -66,6 +76,11 @@ export class IdentityService {
         return result?.userId;
     }
 
+    /**
+     * Hashes a given password using a bcrypt.
+     * 
+     * @param {string} password - The plain text password that needs to be hashed.
+     */
     static async hashPassword(
         password: string
     ) {
@@ -75,6 +90,12 @@ export class IdentityService {
     }
 
 
+    /**
+     * Authenticates a user based on login credentials and their role ("attendee" or "organizer").
+     * 
+     * @param {LoginUser} loginCreds - The login credentials, including email, password, and role.
+     * @param {TUserRoles["role"]} userRole - The role of the user to be authenticated (either "attendee" or "organizer").
+     */
     static async authenticateUser(
         loginCreds: LoginUser,
         userRole: TUserRoles["role"]
@@ -122,6 +143,13 @@ export class IdentityService {
     }
 
 
+    /**
+     * Generates a JSON Web Token (JWT) for a specified audience and subject.
+     * 
+     * @param {string} audience - The intended audience for the JWT, usually a service or system the token is meant for.
+     * @param {string} subject - The subject of the JWT, typically the user or entity the token represents.
+     * @param {Record<string, string>} customClaims - A set of custom claims to include in the JWT payload. Each claim should be a key-value pair.
+     */
     static async generateJwtFor(
         audience: string,
         subject: string,
@@ -146,8 +174,7 @@ export class IdentityService {
     /**
      * Verifies the validity of a given JWT (JSON Web Token).
      * 
-     * @param token - The JWT to be verified.
-     * @returns A promise that resolves to the decoded payload if the token is valid, or throws an error if the token is invalid or expired.
+     * @param {string} token - The JWT to be verified.
      */
     static async verifyJwt<T extends Record<string, string> & Object>(
         token: string

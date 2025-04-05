@@ -9,6 +9,11 @@ import type { TUserRoles } from "../db/schema";
 
 export type Claim = Awaited<ReturnType<typeof IdentityService.verifyJwt<CustomClaims>>>;
 
+/**
+ * Middleware function that verifies if a user has the required role.
+ * 
+ * @param {"organizer" | "attendee"} userRole - The role of the user to verify.
+ */
 export function verifyRole(
     userRole: TUserRoles["role"]
 ) {
