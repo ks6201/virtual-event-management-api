@@ -38,6 +38,9 @@ POSTGRES_PASS=your_database_password_here
 DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASS}@localhost/${POSTGRES_DB}
 
 JWT_SEC=your_jwt_secret_here
+
+# To enable email notifications [ Required From Gmail ]
+
 EMAIL_ID=your_email@example.com
 EMAIL_APP_ID=your_email_app_password
 ```
@@ -119,6 +122,9 @@ POSTGRES_PASS=your_database_password_here
 DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASS}@localhost/${POSTGRES_DB}
 
 JWT_SEC=your_jwt_secret_here
+
+# To enable email notifications [ Required From Gmail ]
+
 EMAIL_ID=your_email@example.com
 EMAIL_APP_ID=your_email_app_password
 ```
