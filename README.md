@@ -33,7 +33,7 @@ POSTGRES_USER=your_database_user_here
 POSTGRES_PASS=your_database_password_here
 
 # Quick Note 
-# ( This project uses @d3vtool/strict-env which supports referencing fields in you .env files):
+# ( This project uses @d3vtool/strict-env which supports referencing fields in your .env files):
 
 DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASS}@localhost/${POSTGRES_DB}
 
@@ -117,7 +117,7 @@ POSTGRES_USER=your_database_user_here
 POSTGRES_PASS=your_database_password_here
 
 # Quick Note 
-# ( This project uses @d3vtool/strict-env which supports referencing fields in you .env files):
+# ( This project uses @d3vtool/strict-env which supports referencing fields in your .env files):
 
 DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASS}@localhost/${POSTGRES_DB}
 
