@@ -21,7 +21,7 @@
   "dependencies": {
     "@d3vtool/ex-frame": "^1.1.8",
     "@d3vtool/strict-env": "^2.1.1",
-    "@d3vtool/utils": "8.1.8",
+    "@d3vtool/utils": "^8.1.9",
     "@d3vtool/validator": "1.1.4",
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.1",
