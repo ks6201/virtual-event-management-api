@@ -20,8 +20,8 @@ export class EventsController {
     /**
      * Handles Creating a new event in the database.
      * 
-     * @param {Object} req - The HTTP request object.
-     * @param {Object} res - The HTTP response object.
+     * @param req - The HTTP request object.
+     * @param res - The HTTP response object.
      */
     @Post("/")
     @Middlewares(
@@ -52,8 +52,8 @@ export class EventsController {
     /**
      * Fetches all events from the database.
      * 
-     * @param {Object} req - The HTTP request object.
-     * @param {Object} res - The HTTP response object.
+     * @param req - The HTTP request object.
+     * @param res - The HTTP response object.
      */
     @Get("/")
     @Middlewares(
@@ -81,8 +81,8 @@ export class EventsController {
     /**
      * Updates an existing event in the database.
      * 
-     * @param {Object} req - The HTTP request.
-     * @param {Object} res - The HTTP response.
+     * @param req - The HTTP request.
+     * @param res - The HTTP response.
      */
     @Put("/:eventId")
     @Middlewares(
@@ -116,8 +116,8 @@ export class EventsController {
     /**
      * Deletes an existing event from the database.
      * 
-     * @param {Object} req - The HTTP request object.
-     * @param {Object} res - The HTTP response object.
+     * @param req - The HTTP request object.
+     * @param res - The HTTP response object.
      */
     @Delete("/:eventId")
     @Middlewares(
@@ -149,8 +149,8 @@ export class EventsController {
     /**
      * Registers a user (attendee) for an event.
      * 
-     * @param {Object} req - The HTTP request object.
-     * @param {Object} res - The HTTP response object.
+     * @param req - The HTTP request object.
+     * @param res - The HTTP response object.
      */
     @Post("/:eventId/register")
     @Middlewares(
@@ -190,8 +190,8 @@ export class EventsController {
     /**
      * Fetches all attendees for a specific event.
      * 
-     * @param {Object} req - The HTTP request object.
-     * @param {Object} res - The HTTP response object.
+     * @param req - The HTTP request object.
+     * @param res - The HTTP response object.
      */
     @Get("/:eventId/attendees")
     @Middlewares(

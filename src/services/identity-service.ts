@@ -23,7 +23,7 @@ export class IdentityService {
     /**
      * Creates a new user in the system.
      * 
-     * @param {CreateUser} user - The user object containing the details of the new user.
+     * @param user - The user object containing the details of the new user.
      */
     static async create(
         user: CreateUser
@@ -36,7 +36,7 @@ export class IdentityService {
             
             if(roles.includes(user.role as any)) {
                 throw new ClientError(
-                    `A user with the email ${user.email} is already registered as ${user.role}.`,
+                    `A user with the email '${user.email}' is already registered as '${user.role}'.`,
                     HttpClientError.Conflict
                 );
             }
@@ -63,7 +63,7 @@ export class IdentityService {
     /**
      * Retrieves the user ID associated with the provided email address.
      * 
-     * @param {string} userEmail - The email address of the user whose ID is to be retrieved.
+     * @param userEmail - The email address of the user whose ID is to be retrieved.
      */
     static async getUserIdByEmail(
         userEmail: TUser["email"]
@@ -79,7 +79,7 @@ export class IdentityService {
     /**
      * Hashes a given password using a bcrypt.
      * 
-     * @param {string} password - The plain text password that needs to be hashed.
+     * @param password - The plain text password that needs to be hashed.
      */
     static async hashPassword(
         password: string
@@ -89,12 +89,37 @@ export class IdentityService {
         return hashedPassword;
     }
 
+    /**
+     * Verifies if a user has the expected role.
+     * 
+     * @param userId - The unique identifier of the user whose role is being verified.
+     * @param claimedRole - The role claimed by the user.
+     * @param expectedUserRole - The role that is expected for the user.
+     * 
+     */
+    static async verifyRole(
+        userId: TUser["userId"],
+        claimedRole: TUserRoles["role"],
+        expectedUserRole: TUserRoles["role"]
+    ): Promise<void | never> {
+        const isOkay = (await UserRoles.getRolesById(userId))
+            .some(role => (role.role === expectedUserRole)  && (claimedRole === expectedUserRole));
+
+
+        if(!isOkay) {
+            throw new ClientError(
+                `You do not have permission to access this resource with the role '${claimedRole}'.`,
+                HttpClientError.Forbidden
+            );
+        }
+    }
+
 
     /**
      * Authenticates a user based on login credentials and their role ("attendee" or "organizer").
      * 
-     * @param {LoginUser} loginCreds - The login credentials, including email, password, and role.
-     * @param {TUserRoles["role"]} userRole - The role of the user to be authenticated (either "attendee" or "organizer").
+     * @param loginCreds - The login credentials, including email, password, and role.
+     * @param userRole - The role of the user to be authenticated (either "attendee" or "organizer").
      */
     static async authenticateUser(
         loginCreds: LoginUser,
@@ -146,9 +171,9 @@ export class IdentityService {
     /**
      * Generates a JSON Web Token (JWT) for a specified audience and subject.
      * 
-     * @param {string} audience - The intended audience for the JWT, usually a service or system the token is meant for.
-     * @param {string} subject - The subject of the JWT, typically the user or entity the token represents.
-     * @param {Record<string, string>} customClaims - A set of custom claims to include in the JWT payload. Each claim should be a key-value pair.
+     * @param audience - The intended audience for the JWT, usually a service or system the token is meant for.
+     * @param subject - The subject of the JWT, typically the user or entity the token represents.
+     * @param customClaims - A set of custom claims to include in the JWT payload. Each claim should be a key-value pair.
      */
     static async generateJwtFor(
         audience: string,
@@ -174,7 +199,7 @@ export class IdentityService {
     /**
      * Verifies the validity of a given JWT (JSON Web Token).
      * 
-     * @param {string} token - The JWT to be verified.
+     * @param token - The JWT to be verified.
      */
     static async verifyJwt<T extends Record<string, string> & Object>(
         token: string

@@ -3,8 +3,8 @@ import { formatDate, formatTime } from "./date-time";
 /**
  * Generates a mail template using the provided name and event information.
  * 
- * @param {string} name - The name to personalize the mail template.
- * @param {Record<string, string>} eventInfo - A key-value pair of event-related information.
+ * @param name - The name to personalize the mail template.
+ * @param eventInfo - A key-value pair of event-related information.
  */
 export function mailTemplate(
     name: string,

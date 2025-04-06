@@ -15,8 +15,8 @@ export class EventService {
     /**
      * Creates a new event in the system.
      * 
-     * @param {UUID} organizerId - The ID of the organizer who is creating the event.
-     * @param {CreateEvent} eventInfo - An object containing the details of the event.
+     * @param organizerId - The ID of the organizer who is creating the event.
+     * @param eventInfo - An object containing the details of the event.
      */
     static async create(
         organizerId: UUID,
@@ -31,7 +31,7 @@ export class EventService {
     /**
      * Fetches all events associated with a specific organizer.
      * 
-     * @param {UUID} organizerId - The ID of the organizer whose events are to be fetched.
+     * @param organizerId - The ID of the organizer whose events are to be fetched.
      */
     static async fetchAll(
         organizerId: UUID
@@ -45,9 +45,9 @@ export class EventService {
     /**
      * Updates an event by its ID for a specific organizer.
      *
-     * @param {UUID} organizerId - The ID of the organizer who owns the event.
-     * @param {UUID} eventId - The ID of the event to update.
-     * @param {UpdateEvents} updateEventInfo - The updated event information.
+     * @param organizerId - The ID of the organizer who owns the event.
+     * @param eventId - The ID of the event to update.
+     * @param updateEventInfo - The updated event information.
      */
     static async updateById(
         organizerId: UUID,
@@ -65,8 +65,8 @@ export class EventService {
     /**
      * Deletes an event by its ID for a specific organizer.
      *
-     * @param {UUID} organizerId - The ID of the organizer who owns the event.
-     * @param {UUID} eventId - The ID of the event to delete.
+     * @param organizerId - The ID of the organizer who owns the event.
+     * @param eventId - The ID of the event to delete.
      */
     static async deleteById(
         organizerId: UUID,
@@ -83,8 +83,8 @@ export class EventService {
     /**
      * Registers an attendee for a specific event.
      *
-     * @param {UUID} eventId - The ID of the event to register for.
-     * @param {UUID} attendeeId - The ID of the attendee registering for the event.
+     * @param eventId - The ID of the event to register for.
+     * @param attendeeId - The ID of the attendee registering for the event.
      */
     static async registerAttendeeForEvent(
         eventId: Events["eventId"],
@@ -127,7 +127,7 @@ export class EventService {
     /**
      * Retrieves all attendees for a specific event.
      *
-     * @param {UUID} eventId - The ID of the event to get attendees for.
+     * @param eventId - The ID of the event to get attendees for.
      */
     static async getAllAttendeesByEventId(
         eventId: Events["eventId"]
@@ -139,7 +139,7 @@ export class EventService {
     /**
      * Retrieves all events that a specific attendee is registered for.
      *
-     * @param {UUID} attendeeId - The ID of the attendee to get events for.
+     * @param attendeeId - The ID of the attendee to get events for.
      */
     static async getAllEventByAttendeeId(
         attendeeId: TUser["userId"]

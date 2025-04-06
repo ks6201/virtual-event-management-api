@@ -3,7 +3,7 @@
  * 
  * Formats ISO date string to Indian Readable Date string.
  *  
- * @param {string} isoDate
+ * @param isoDate
 */
 export function formatDate(isoDate: string) {
     const segms = isoDate.split("-");
@@ -14,7 +14,7 @@ export function formatDate(isoDate: string) {
  * 
  * Formats hh:mm:ss to hh:mm.
  *  
- * @param {string} time
+ * @param time
 */
 export function formatTime(time: string) {
     const segms = time.split(":");

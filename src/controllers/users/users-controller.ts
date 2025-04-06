@@ -18,8 +18,8 @@ export class UsersController {
     /**
      * Handles the registration process for a user (attendee or organizer).
      * 
-     * @param {Object} req - The HTTP request object containing the registration data.
-     * @param {Object} res - The HTTP response object used to send a response back to the client.
+     * @param req - The HTTP request object containing the registration data.
+     * @param res - The HTTP response object used to send a response back to the client.
      */
     @Post("/register")
     @Middlewares(
@@ -44,8 +44,8 @@ export class UsersController {
     /**
      * Handles the login process for an attendee.
      * 
-     * @param {Object} req - The HTTP request object containing the login data.
-     * @param {Object} res - The HTTP response object used to send a response back to the client.
+     * @param req - The HTTP request object containing the login data.
+     * @param res - The HTTP response object used to send a response back to the client.
      */
     @Post("/login")
     @Middlewares(
@@ -79,8 +79,8 @@ export class UsersController {
     /**
      * Retrieves all events for a specific attendee.
      * 
-     * @param {Object} req - The HTTP request object containing the request data, including the attendee ID.
-     * @param {Object} res - The HTTP response object used to send a response back to the client.
+     * @param req - The HTTP request object containing the request data, including the attendee ID.
+     * @param res - The HTTP response object used to send a response back to the client.
      */
     @Get("/attendee/events")
     @Middlewares(

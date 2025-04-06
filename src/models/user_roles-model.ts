@@ -15,8 +15,8 @@ export class UserRoles {
     /**
      * To create new 'user_roles'.
      *  
-     * @param {"organizer" | "attendee"} role
-     * @param {string} userId
+     * @param role
+     * @param userId
     */
     static async create(
         role: TUserRoles["role"],
@@ -31,9 +31,9 @@ export class UserRoles {
     /**
      * To create new 'user_roles' using transaction client.
      *
-     * @param {PgTransaction} tx 
-     * @param {"organizer" | "attendee"} role
-     * @param {string} userId
+     * @param tx 
+     * @param role
+     * @param userId
     */
     static async tCreate(
         tx: PGTX,
@@ -49,7 +49,7 @@ export class UserRoles {
     /**
      * Fetches the roles associated with a specific user by their ID.
      * 
-     * @param {string} userId - The ID of the user whose roles are to be fetched.
+     * @param userId - The ID of the user whose roles are to be fetched.
      */
     static async getRolesById(
         userId: UUID

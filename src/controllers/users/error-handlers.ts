@@ -8,9 +8,9 @@ import { defaultServerError } from "../../errors/error-handlers/default-server-e
 /**
  * Handles errors that occur during the signup process.
  * 
- * @param {unknown} error - The error object, which could be of any type (unknown).
- * @param {Object} req - The HTTP request object containing request data.
- * @param {Object} res - The HTTP response object used to send a response to the client.
+ * @param error - The error object, which could be of any type (unknown).
+ * @param req - The HTTP request object containing request data.
+ * @param res - The HTTP response object used to send a response to the client.
  */
 export function signupError(
     error: unknown,
@@ -36,9 +36,9 @@ export function signupError(
 /**
  * Handles errors that occur during the login process.
  * 
- * @param {unknown} error - The error object, which could be of any type (unknown).
- * @param {Object} req - The HTTP request object containing request data.
- * @param {Object} res - The HTTP response object used to send a response to the client.
+ * @param error - The error object, which could be of any type (unknown).
+ * @param req - The HTTP request object containing request data.
+ * @param res - The HTTP response object used to send a response to the client.
  */
 export function loginError(
     error: unknown,

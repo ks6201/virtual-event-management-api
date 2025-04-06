@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
-import type { CustomClaims, IdentityService } from "../services/identity-service";
+import { IdentityService, type CustomClaims } from "../services/identity-service";
 import { UserRoles } from "../models/user_roles-model";
 import { ClientError } from "../errors/error-classes/client-error";
 import { HttpClientError } from "../libs/http-response-code";
@@ -12,10 +12,10 @@ export type Claim = Awaited<ReturnType<typeof IdentityService.verifyJwt<CustomCl
 /**
  * Middleware function that verifies if a user has the required role.
  * 
- * @param {"organizer" | "attendee"} userRole - The role of the user to verify.
+ * @param expectedUserRole - The role of the user to verify.
  */
 export function verifyRole(
-    userRole: TUserRoles["role"]
+    expectedUserRole: TUserRoles["role"]
 ) {
     return async function(
         req: Request,
@@ -24,15 +24,11 @@ export function verifyRole(
     ) {
         const claims = (req as any).claims as Claim;
     
-        const isOkay = (await UserRoles.getRolesById(claims.userId))
-            .some(role => (role.role === userRole)  && (claims.role === userRole));
-            
-        if(!isOkay) {
-            throw new ClientError(
-                `You do not have permission to access this resource with the role ${claims.role}.`,
-                HttpClientError.Forbidden
-            );
-        }
+        await IdentityService.verifyRole(
+            claims.userId,
+            claims.role,
+            expectedUserRole
+        );
     
         next();
     }

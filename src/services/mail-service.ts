@@ -14,7 +14,15 @@ class MailService {
             }
         });
     }
-
+    
+    /**
+     * Sends an email to the specified recipient.
+     *
+     * @param from - The sender's email address.
+     * @param toMail - The recipient's email address.
+     * @param subject - The subject of the email.
+     * @param body - The body content of the email. 
+     */
     async sendMail(from: string, toMail: string, subject: string, body: string): Promise<boolean> {
         const mailOptions: Mail.Options = {
             from: `${from} <${process.env.MAIL_ID}>`,

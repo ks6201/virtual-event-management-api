@@ -5,8 +5,7 @@ export type UUID = Brand<string, "UUID">;
 /**
  * Checks if the 'value' is valid uuid string'.
  *
- * @param {unknown} value 
- * @returns {boolean}
+ * @param value 
  */
 export function isUUID(value: unknown): value is UUID {
     try {

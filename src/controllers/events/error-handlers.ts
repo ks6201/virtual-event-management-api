@@ -8,9 +8,9 @@ import { defaultServerError } from "../../errors/error-handlers/default-server-e
 /**
  * Handles errors that occur during the event creation process.
  * 
- * @param {unknown} error - The error object.
- * @param {Object} req - The HTTP request object.
- * @param {Object} res - The HTTP response object.
+ * @param error - The error object.
+ * @param req - The HTTP request object.
+ * @param res - The HTTP response object.
  */
 export function createEventError(
     error: unknown,

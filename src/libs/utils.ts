@@ -12,7 +12,7 @@ export type OptionalKey<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
  * error handler, which would otherwise not catch them, if express version is 
  * below 5.
  *
- * @param {RequestHandler} fn - The controller function that returns a promise.
+ * @param fn - The controller function that returns a promise.
  */
 export const asyncHandler = (fn: RequestHandler) => (
     req: Request,
@@ -38,8 +38,8 @@ export const asyncSleep = (ms: number) =>
 /**
  * Freezes an object to make it immutable, preventing modification of its properties.
  * 
- * @param {Object} obj - The object to be made read-only.
- * @returns {Object} The frozen (read-only) object.
+ * @param obj - The object to be made read-only.
+ * @returns The frozen (read-only) object.
  */
 export function makeReadOnly<T>(obj: T): Readonly<T> {
     return Object.freeze(obj);    

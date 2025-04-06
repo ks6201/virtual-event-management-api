@@ -15,8 +15,8 @@ export class AttendeesEventMapModel {
     /**
      * Creates a new 'attendee_event_map' in table.
      * 
-     * @param {string} eventId - The ID of the event to associate with the attendee.
-     * @param {string} attendeeId - The ID of the attendee to associate with the event.
+     * @param eventId - The ID of the event to associate with the attendee.
+     * @param attendeeId - The ID of the attendee to associate with the event.
      */
     static async create(
         eventId: Events["eventId"],
@@ -49,7 +49,7 @@ export class AttendeesEventMapModel {
     /**
      * Checks if an attendee is already registered for an event.
      * 
-     * @param {string} attendeeId - The ID of the attendee to check.
+     * @param attendeeId - The ID of the attendee to check.
      */
     static async isAttendeAlreadyRegistered(
         attendeeId: TUser["userId"]
@@ -72,7 +72,7 @@ export class AttendeesEventMapModel {
     /**
      * Fetches all attendees for a specific event.
      * 
-     * @param {string} eventId - The ID of the event for which to fetch the attendees.
+     * @param eventId - The ID of the event for which to fetch the attendees.
      */
     static async getAllAttendees(
         eventId: Events["eventId"]
@@ -110,7 +110,7 @@ export class AttendeesEventMapModel {
     /**
      * Fetches all events associated with a specific attendee.
      * 
-     * @param {string} attendeeId - The ID of the attendee for whom to fetch the events.
+     * @param attendeeId - The ID of the attendee for whom to fetch the events.
      */
     static async getEventsByAttendeeId(
         attendeeId: TUser["userId"]
