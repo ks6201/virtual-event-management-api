@@ -141,18 +141,18 @@ bun run app.ts
 
 The following variables are required in your `.env` file:
 
-| Variable         | Description                                               |
-|------------------|-----------------------------------------------------------|
-| `NODE_ENV`       | The environment mode (`development`, `production`, etc.) |
-| `PORT`           | Port on which the server runs (e.g., `3000`)              |
-| `POSTGRES_DB`    | PostgreSQL database name                                  |
-| `POSTGRES_HOST`  | Host of the PostgreSQL server                             |
-| `POSTGRES_USER`  | Database user                                             |
-| `POSTGRES_PASS`  | Database password                                         |
-| `DATABASE_URL`   | Full PostgreSQL connection string                         |
-| `JWT_SEC`        | Secret for signing JWT tokens                             |
-| `EMAIL_ID`       | Email address used for communication                      |
-| `EMAIL_APP_ID`   | App-specific email password or key                        |
+| **Variable**      | **Description**                                             |
+|-------------------|-------------------------------------------------------------|
+| `NODE_ENV`        | The environment mode (`development`, `production`, etc.)    |
+| `PORT`            | Port on which the server runs (e.g., `3000`)                |
+| `POSTGRES_DB`     | Name of the PostgreSQL database                             |
+| `POSTGRES_HOST`   | Host of the PostgreSQL server                               |
+| `POSTGRES_USER`   | Database user                                               |
+| `POSTGRES_PASS`   | Database password                                           |
+| `DATABASE_URL`    | Full PostgreSQL connection string                           |
+| `JWT_SEC`         | Secret for signing JWT tokens                               |
+| `EMAIL_ID`        | Email address from Gmail used for event registration communication |
+| `EMAIL_APP_ID`    | Gmail App ID password or key                                |
 
 ---
 
