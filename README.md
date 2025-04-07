@@ -168,7 +168,7 @@ bun run test
 
 ## API Endpoints
 
-### POST /events/register
+### POST /users/register
 
 **Description:**  
 Registers a new user as either an attendee or an organizer.
@@ -200,7 +200,7 @@ UserController.register
 
 ---
 
-### POST /events/login
+### POST /users/login
 
 **Description:**  
 Logs in a registered attendee and returns an authentication token.
@@ -229,7 +229,7 @@ UserController.login
 **Controller:**
 - `UserController.login`: Handles user login and token generation.
 
-### GET /events/attendee/events
+### GET /users/attendee/events
 
 **Description:**  
 Retrieves all events that the authenticated attendee is registered for.
